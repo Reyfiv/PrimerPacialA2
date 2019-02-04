@@ -1,0 +1,121 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="PrimerPacialA2.Site" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%:Page.Title%>Banking Control SAG</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <%--Librerias para el toast--%>
+    <link href="./Media/css/Grey/ListBox.Grey.css" rel="stylesheet" type="text/css" />
+    <link href="./Media/css/WebTrack.css" rel="stylesheet" type="text/css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css"
+        rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"
+        type="text/javascript"></script>
+    <%--Programacion en Javascript para que funcione el toast--%>
+    <script type="text/javascript">
+        function Notify(msg, title, type, clear, pos, sticky) {
+            if (clear == true) {
+                toastr.clear();
+            }
+            if (sticky == true) {
+                toastr.tapToDismiss = true;
+                toastr.timeOut = 10000;
+            }
+
+            toastr.options.onclick = function () {
+                //alert('You can perform some custom action after a toast goes away'); 
+            }
+            //"toast-top-left"; 
+            toastr.options.positionClass = pos;
+            if (type.toLowerCase() == 'info') {
+                toastr.options.timeOut = 1000;
+                toastr.tapToDismiss = true;
+                toastr.info(msg, title);
+            }
+            if (type.toLowerCase() == 'success') {
+                toastr.options.timeOut = 1500;
+                toastr.success(msg, title);
+            }
+            if (type.toLowerCase() == 'warning') {
+                toastr.options.timeOut = 3000;
+                toastr.warning(msg, title);
+            }
+            if (type.toLowerCase() == 'error') {
+                toastr.options.timeOut = 10000;
+                toastr.error(msg, title);
+            }
+        }
+    </script>
+
+    <asp:PlaceHolder ID="head" runat="server"></asp:PlaceHolder>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+
+        <div class="row">
+            <div class="col-lg-12" style="background-color: white; text-align:center">
+                <a href="/default.aspx">
+                    <img src="/Resources/Logo.png" alt="Banking Control">
+                </a>
+            </div>
+        </div>
+
+        <%--menu principal--%>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Banking Control</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Registros<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/Registros/rCuentas.aspx">Cuentas</a></li>
+                                <li><a href="/Registros/rDepositos.aspx">Depositos</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Consultas<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/Consultas/cCuentas.aspx">Cuentas</a></li>
+                                <li><a href="/Consultas/cDepositos.aspx">Depositos</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Ayuda</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><span class="glyphicon glyphicon-lock"></span> Cerrar Sesion</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <%--contenedor y pie de pagina--%>
+        <div class=" container body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+
+            <hr />
+            <footer>
+                <p>&copy; <%: DateTime.Now.Year %> - Copyright Banking Control SAG</p>
+            </footer>
+        </div>
+    </form>
+</body>
+</html>
