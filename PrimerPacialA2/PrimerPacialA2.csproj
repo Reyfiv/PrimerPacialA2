@@ -74,6 +74,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Consultas\cCuentas.aspx" />
+    <Content Include="Consultas\cDepositos.aspx" />
+    <Content Include="default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Registros\rCuentas.aspx" />
     <Content Include="Registros\rDepositos.aspx" />
@@ -87,6 +89,20 @@
     </Compile>
     <Compile Include="Consultas\cCuentas.aspx.designer.cs">
       <DependentUpon>cCuentas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\cDepositos.aspx.cs">
+      <DependentUpon>cDepositos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Consultas\cDepositos.aspx.designer.cs">
+      <DependentUpon>cDepositos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
