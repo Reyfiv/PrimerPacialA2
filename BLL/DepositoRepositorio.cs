@@ -48,8 +48,41 @@ namespace BLL
             return paso;
         }
 
+        public override bool Modificar(Deposito entity)
+        {
+            bool paso = false;
+            RepositorioBase < Deposito> repositorio = new RepositorioBase<Deposito>();
+            try
+            {
+                var depositosanterior = repositorio.Buscar(entity.DepositoID);
+
+                var Cuenta = _contexto.Cuenta.Find(entity.CuentaID);
+                var Cuentasanterior = _contexto.Cuenta.Find(depositosanterior.CuentaID);
+
+                if (entity.CuentaID != depositosanterior.CuentaID)
+                {
+                    Cuenta.Balance += entity.Monto;
+                    Cuentasanterior.Balance -= depositosanterior.Monto;
+                }
+
+                decimal diferencia;
+                diferencia = entity.Monto - depositosanterior.Monto;
+                Cuenta.Balance += diferencia;
+
+                _contexto.Entry(entity).State = EntityState.Modified;
+                if (_contexto.SaveChanges() > 0)
+                {
+                    paso = true;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return paso;
+        }
+
     }
 
-    
 }
  
