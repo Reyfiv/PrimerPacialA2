@@ -14,7 +14,7 @@
                 </div>
                     <asp:RegularExpressionValidator ID="ValidaID" runat="server" ErrorMessage='Campo "Prestamo Id" solo acepta numeros' ControlToValidate="PrestamoIdTextBox" ValidationExpression="^[0-9]*" Text="*" ForeColor="Red" Display="Dynamic" ToolTip="Entrada no valida" ValidationGroup="Guardar"></asp:RegularExpressionValidator>
                 <div class="col-md-1 col-sm-2 col-xs-4">
-                    <asp:Button ID="BuscarButton" runat="server" Text="Buscar" class="btn btn-info btn-sm" />
+                    <asp:Button ID="BuscarButton" runat="server" Text="Buscar" class="btn btn-info btn-sm" OnClick="BuscarButton_Click" />
                 </div>
             </div>
             <br/>
@@ -41,7 +41,7 @@
                     <asp:TextBox  ID="InteresTextBox" runat="server" class="form-control input-sm" Style="font-size:large; text-align:center"></asp:TextBox>  
                 </div>
                     <label for="InteresTextBox" style="font-size:large">%</label>
-                    <asp:RegularExpressionValidator ID="ValidaMontoNUM" runat="server" ErrorMessage='Campo "Interes" solo acepta numeros' ControlToValidate="InteresTextBox" ValidationExpression="^[0-9]*" Text="*" ForeColor="Red" Display="Dynamic" ToolTip="Entrada no valida" ValidationGroup="Guardar"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="ValidaMontoNUM" runat="server" ErrorMessage='Campo "Interes" solo acepta numeros' ControlToValidate="InteresTextBox" ValidationExpression="^[0.0-9.0]*" Text="*" ForeColor="Red" Display="Dynamic" ToolTip="Entrada no valida" ValidationGroup="Guardar"></asp:RegularExpressionValidator>
                 <asp:RequiredFieldValidator ID="ValidaInteres" runat="server" ErrorMessage="El campo &quot;Monto&quot; esta vacio" ControlToValidate="InteresTextBox" ForeColor="Red" Display="Dynamic" ToolTip="Campo Interes obligatorio" ValidationGroup="Guardar">*</asp:RequiredFieldValidator>
             </div>
             <br/>
@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="col-md-1 col-sm-2 col-xs-4">
-                    <asp:Button ID="CalcularButton" runat="server" Text="Calcular Cuotas" class="btn btn-success btn-sm" />
+                    <asp:Button ID="CalcularButton" runat="server" Text="Calcular Cuotas" class="btn btn-success btn-sm" OnClick="CalcularButton_Click" />
                 </div>
             </div>
             <br/>
@@ -83,7 +83,7 @@
                     <div class="form-group">
                         <asp:Button ID="NuevoButton" runat="server" Text="Nuevo" class="btn btn-primary btn-md" OnClick="NuevoButton_Click" />
                         <asp:Button ID="GuardarButton" runat="server" Text="Guardar" class="btn btn-success btn-md"  ValidationGroup="Guardar" OnClick="GuardarButton_Click" />
-                        <asp:Button ID="EliminarButton" runat="server" Text="Eliminar" class="btn btn-danger btn-md"  />
+                        <asp:Button ID="EliminarButton" runat="server" Text="Eliminar" class="btn btn-danger btn-md" OnClick="EliminarButton_Click"  />
                     </div>
                 </div>
             </div>

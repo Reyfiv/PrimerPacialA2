@@ -21,12 +21,12 @@ namespace BLL
                     Cuotas.Cuotas.Count();
                     foreach (var item in Cuotas.Cuotas)
                     {
-                        //int a = item.NumCuotas;
-                        //int b = item.ID;
-                        //DateTime c = item.Fecha;
-                        //decimal d = item.Interes;
-                        //decimal e = item.Capital;
-                        //decimal f = item.BCE;
+                        int a = item.NumCuotas;
+                        int b = item.ID;
+                        DateTime c = item.Fecha;
+                        decimal d = item.Interes;
+                        decimal e = item.Capital;
+                        decimal f = item.BCE;
                     }
                 }
                 _contexto.Dispose();
