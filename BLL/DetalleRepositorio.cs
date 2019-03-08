@@ -21,12 +21,12 @@ namespace BLL
                     Cuotas.Cuotas.Count();
                     foreach (var item in Cuotas.Cuotas)
                     {
-                        int a = item.NumCuotas;
-                        int b = item.ID;
-                        DateTime c = item.Fecha;
-                        decimal d = item.Interes;
-                        decimal e = item.Capital;
-                        decimal f = item.BCE;
+                        //int a = item.NumCuotas;
+                        //int b = item.ID;
+                        //DateTime c = item.Fecha;
+                        //decimal d = item.Interes;
+                        //decimal e = item.Capital;
+                        //decimal f = item.BCE;
                     }
                 }
                 _contexto.Dispose();
@@ -96,6 +96,31 @@ namespace BLL
                     paso = true;
                 }
                 _contexto.Dispose();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return paso;
+        }
+
+        public override bool Guardar(Prestamos entity)
+        {
+            bool paso = false;
+            decimal monto = 0;
+            _contexto = new DAL.Contexto();
+            try
+            {
+                foreach (var item in entity.Cuotas)
+                {
+                    monto += item.Capital + item.Interes;
+                }
+                _contexto.Cuenta.Find(entity.CuentaId).Balance += monto;
+                _contexto.Prestamos.Add(entity);
+
+                if (_contexto.SaveChanges() > 0)
+                    paso = true;
+
             }
             catch (Exception)
             {

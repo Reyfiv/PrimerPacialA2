@@ -11,7 +11,6 @@ namespace PrimerPacialA2.Registros
         protected void Page_Load(object sender, EventArgs e)
         {
             LlenaCombo();
-            FechaTextBox.Text = DateTime.Now.ToString("yyyy-MM-dd");
         }
 
         protected void BindGrid()
@@ -36,7 +35,7 @@ namespace PrimerPacialA2.Registros
 
             CuentaIdDropDownList.DataSource = repositorioBase.GetList(t => true);
             CuentaIdDropDownList.DataValueField = "CuentaID";
-            CuentaIdDropDownList.DataTextField = "CuentaID";
+            CuentaIdDropDownList.DataTextField = "Descripcion";
             CuentaIdDropDownList.DataBind();
 
             ViewState["Prestamos"] = new Prestamos();
@@ -50,6 +49,10 @@ namespace PrimerPacialA2.Registros
             prestamos.Capital = Utils.ToDecimal(CapitalTextBox.Text);
             prestamos.InteresAnual = Utils.ToDecimal(InteresTextBox.Text);
             prestamos.TiempoMeses = Utils.ToInt(TiempoMesesTextBox.Text);
+            DateTime date;
+            bool resultado = DateTime.TryParse(FechaTextBox.Text, out date);
+            if (resultado == true)
+                prestamos.Fecha = date;
             return prestamos;
         }
 
