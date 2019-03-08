@@ -87,6 +87,7 @@
                             <ul class="dropdown-menu">
                                 <li><a href="/Registros/rCuentas.aspx">Cuentas</a></li>
                                 <li><a href="/Registros/rDepositos.aspx">Depositos</a></li>
+                                <li><a href="/Registros/rPrestamos.aspx">Prestamos</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">

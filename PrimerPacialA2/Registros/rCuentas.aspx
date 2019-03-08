@@ -17,6 +17,7 @@
                     <asp:Button ID="BuscarButton" runat="server" Text="Buscar" class="btn btn-info btn-sm" OnClick="BuscarButton_Click"  />
                 </div>
             </div>
+              <br/>
               <%--Nombre y balance--%>
             <div class="form-group">
                 <label for="NombreTextBox" class="col-md-3 control-label input-sm" style="font-size:large">Nombre</label>
@@ -32,6 +33,7 @@
                  <asp:RegularExpressionValidator ID="ValidaBalanceNUM" runat="server" ErrorMessage='Campo "Balance" solo acepta numeros' ControlToValidate="BalanceTextBox" ValidationExpression="^[0-9]*" Text="*" ForeColor="Red" Display="Dynamic" ToolTip="Entrada no valida" ValidationGroup="Guardar"></asp:RegularExpressionValidator>
                 <asp:RequiredFieldValidator ID="ValidaBalance" runat="server" ErrorMessage="El campo &quot;Balance&quot; esta vacio" ControlToValidate="BalanceTextBox" ForeColor="Red" Display="Dynamic" ToolTip="Campo Balance obligatorio" ValidationGroup="Guardar">*</asp:RequiredFieldValidator>
             </div>
+              <br/>
             <%--Fecha--%>
             <div class="form-group">
                 <div class="col-md-8">

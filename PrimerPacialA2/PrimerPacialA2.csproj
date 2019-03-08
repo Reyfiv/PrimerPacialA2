@@ -79,6 +79,7 @@
     <Content Include="Global.asax" />
     <Content Include="Registros\rCuentas.aspx" />
     <Content Include="Registros\rDepositos.aspx" />
+    <Content Include="Registros\rPrestamos.aspx" />
     <Content Include="Resources\Logo.png" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -121,6 +122,13 @@
     </Compile>
     <Compile Include="Registros\rDepositos.aspx.designer.cs">
       <DependentUpon>rDepositos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Registros\rPrestamos.aspx.cs">
+      <DependentUpon>rPrestamos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registros\rPrestamos.aspx.designer.cs">
+      <DependentUpon>rPrestamos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

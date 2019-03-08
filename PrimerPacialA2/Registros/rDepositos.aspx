@@ -18,7 +18,8 @@
                     <asp:Button ID="BuscarButton" runat="server" Text="Buscar" class="btn btn-info btn-sm" OnClick="BuscarButton_Click" />
                 </div>
             </div>
-              <%--CuentaId--%>
+              <br/>
+            <%--CuentaId--%>
             <div class="form-group">
                 <label for="CuentaIdDropDownList" class="col-md-3 control-label input-sm" style="font-size:large">Cuenta</label>
                 <div class="col-md-8">
@@ -26,8 +27,8 @@
                      </asp:DropDownList>
                 </div>
             </div>
-
-              <%--Concepto y Monto--%>
+            <br/>
+             <%--Concepto y Monto--%>
             <div class="form-group">
                 <label for="ConceptoTextBox" class="col-md-3 control-label input-sm" style="font-size:large">Concepto</label>
                 <div class="col-md-3">
@@ -42,7 +43,7 @@
                  <asp:RegularExpressionValidator ID="ValidaMontoNUM" runat="server" ErrorMessage='Campo "Monto" solo acepta numeros' ControlToValidate="MontoTextBox" ValidationExpression="^[0-9]*" Text="*" ForeColor="Red" Display="Dynamic" ToolTip="Entrada no valida" ValidationGroup="Guardar"></asp:RegularExpressionValidator>
                 <asp:RequiredFieldValidator ID="ValidaMonto" runat="server" ErrorMessage="El campo &quot;Monto&quot; esta vacio" ControlToValidate="MontoTextBox" ForeColor="Red" Display="Dynamic" ToolTip="Campo Monto obligatorio" ValidationGroup="Guardar">*</asp:RequiredFieldValidator>
             </div>
-
+             <br/>
              <%--Fecha--%>
             <div class="form-group">
                 <div class="col-md-8">

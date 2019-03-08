@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace Entities
 {
     [Serializable]
     public class Prestamos
     {
+        [Key]
         public int ID { get; set; }
         public int CuentaId { get; set; }
         public decimal Capital { get; set; }
@@ -16,7 +15,6 @@ namespace Entities
         public int TiempoMeses { get; set; }
         public DateTime Fecha { get; set; }
         public virtual List<CuotasDetalle> Cuotas { get; set; }
-        public decimal Total { get; set; }
 
         public Prestamos()
         {
@@ -27,12 +25,12 @@ namespace Entities
             TiempoMeses = 0;
             Fecha = DateTime.Now;
             this.Cuotas = new List<CuotasDetalle>();
-            Total = 0;
+
         }
 
-        public void AgregarDetalle(int numCuotas, DateTime fecha, decimal interes, decimal capital, decimal bce)
+        public void AgregarDetalle(int numCuotas, int id, DateTime fecha, decimal interes, decimal capital, decimal bce)
         {
-            this.Cuotas.Add(new CuotasDetalle(numCuotas, fecha, interes, capital, bce));
+            this.Cuotas.Add(new CuotasDetalle(numCuotas, id, fecha, interes, capital, bce));
         }
     }
 }
