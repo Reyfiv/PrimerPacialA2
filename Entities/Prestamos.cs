@@ -28,9 +28,5 @@ namespace Entities
 
         }
 
-        public void AgregarDetalle(int numCuotas, int id, DateTime fecha, decimal interes, decimal capital, decimal bce)
-        {
-            this.Cuotas.Add(new CuotasDetalle(numCuotas, id, fecha, interes, capital, bce));
-        }
     }
 }

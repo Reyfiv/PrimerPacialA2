@@ -2,6 +2,7 @@
 using Entities;
 using PrimerPacialA2.Utilidades;
 using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
 
 namespace PrimerPacialA2.Registros
@@ -35,7 +36,7 @@ namespace PrimerPacialA2.Registros
 
             CuentaIdDropDownList.DataSource = repositorioBase.GetList(t => true);
             CuentaIdDropDownList.DataValueField = "CuentaID";
-            CuentaIdDropDownList.DataTextField = "Descripcion";
+            CuentaIdDropDownList.DataTextField = "Nombre";
             CuentaIdDropDownList.DataBind();
 
             ViewState["Prestamos"] = new Prestamos();
@@ -53,6 +54,7 @@ namespace PrimerPacialA2.Registros
             bool resultado = DateTime.TryParse(FechaTextBox.Text, out date);
             if (resultado == true)
                 prestamos.Fecha = date;
+            prestamos.Cuotas = (List<CuotasDetalle>)ViewState["CuotasDetalle"];
             return prestamos;
         }
 
@@ -97,12 +99,11 @@ namespace PrimerPacialA2.Registros
         protected void BuscarButton_Click(object sender, EventArgs e)
         {
             DetalleRepositorio repositorio = new DetalleRepositorio();
-            var usuario = repositorio.Buscar(Utils.ToInt(PrestamoIdTextBox.Text));
-
-            if (usuario != null)
-            {
-                Limpiar();
-                LlenaCampos(usuario);
+            var prestamos = repositorio.Buscar(Utils.ToInt(PrestamoIdTextBox.Text));
+            Limpiar();
+            if (prestamos != null)
+            {     
+                LlenaCampos(prestamos);
                 Utils.ShowToastr(this, "Busqueda exitosa", "Exito", "success");
             }
             else
@@ -113,7 +114,7 @@ namespace PrimerPacialA2.Registros
         {
             Prestamos prestamos = new Prestamos();
             CuotasDetalle cuotas = new CuotasDetalle();
-            prestamos = (Prestamos)ViewState["Prestamos"];
+            List<CuotasDetalle> cuotasDetalles = new List<CuotasDetalle>();
 
             decimal interes, capital, meses, montoPagar;
             interes = Utils.ToDecimal(InteresTextBox.Text);
@@ -137,12 +138,14 @@ namespace PrimerPacialA2.Registros
                 }
                 if(i == 0)
                 {
-                    prestamos.AgregarDetalle(0, Utils.ToInt(PrestamoIdTextBox.Text), cuotas.Fecha, cuotas.Interes, cuotas.Capital, cuotas.BCE);
+                    cuotasDetalles.Add(new CuotasDetalle(0, Utils.ToInt(PrestamoIdTextBox.Text), cuotas.Fecha, cuotas.Interes, cuotas.Capital, cuotas.BCE));
                 }
                 else
-                    prestamos.AgregarDetalle(0, Utils.ToInt(PrestamoIdTextBox.Text), cuotas.Fecha.AddMonths(i), cuotas.Interes, cuotas.Capital, cuotas.BCE);
-                ViewState["Prestamos"] = prestamos;
-                this.BindGrid();
+                    cuotasDetalles.Add(new CuotasDetalle(0, Utils.ToInt(PrestamoIdTextBox.Text), cuotas.Fecha.AddMonths(i), cuotas.Interes, cuotas.Capital, cuotas.BCE));
+
+                ViewState["CuotasDetalle"] = cuotasDetalles;
+                DatosGridView.DataSource = ViewState["CuotasDetalle"];
+                DatosGridView.DataBind();
             }
             
         }
@@ -162,7 +165,7 @@ namespace PrimerPacialA2.Registros
 
             prestamos = LlenaClase(prestamos);
             if (prestamos.ID == 0)
-                paso = repositorioBase.Guardar(prestamos);
+                paso = repositorio.Guardar(prestamos);
             else
                 paso = repositorio.Modificar(prestamos);
             if (paso)
