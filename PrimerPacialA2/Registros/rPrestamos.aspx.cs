@@ -107,7 +107,7 @@ namespace PrimerPacialA2.Registros
                 Utils.ShowToastr(this, "Busqueda exitosa", "Exito", "success");
             }
             else
-                Utils.ShowToastr(this.Page, "El usuario que intenta buscar no existe", "Error", "error");
+                Utils.ShowToastr(this.Page, "El Prestamo que intenta buscar no existe", "Error", "error");
         }
 
         protected void CalcularButton_Click(object sender, EventArgs e)
@@ -125,6 +125,7 @@ namespace PrimerPacialA2.Registros
             {
                 cuotas.Interes = interes * capital / meses;
                 cuotas.Capital = capital / meses;
+                cuotas.MontoPorCuota = cuotas.Interes + cuotas.Capital;
 
                 montoPagar = cuotas.Interes * meses + capital;
                 if (i == 0)
@@ -138,10 +139,10 @@ namespace PrimerPacialA2.Registros
                 }
                 if(i == 0)
                 {
-                    cuotasDetalles.Add(new CuotasDetalle(0, Utils.ToInt(PrestamoIdTextBox.Text), cuotas.Fecha, cuotas.Interes, cuotas.Capital, cuotas.BCE));
+                    cuotasDetalles.Add(new CuotasDetalle(0, Utils.ToInt(PrestamoIdTextBox.Text), cuotas.Fecha, cuotas.Interes, cuotas.Capital, cuotas.MontoPorCuota, cuotas.BCE));
                 }
                 else
-                    cuotasDetalles.Add(new CuotasDetalle(0, Utils.ToInt(PrestamoIdTextBox.Text), cuotas.Fecha.AddMonths(i), cuotas.Interes, cuotas.Capital, cuotas.BCE));
+                    cuotasDetalles.Add(new CuotasDetalle(0, Utils.ToInt(PrestamoIdTextBox.Text), cuotas.Fecha.AddMonths(i), cuotas.Interes, cuotas.Capital, cuotas.MontoPorCuota, cuotas.BCE));
 
                 ViewState["CuotasDetalle"] = cuotasDetalles;
                 DatosGridView.DataSource = ViewState["CuotasDetalle"];

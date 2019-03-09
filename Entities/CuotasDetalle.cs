@@ -13,6 +13,7 @@ namespace Entities
         public DateTime Fecha { get; set; }
         public decimal Interes { get; set; }
         public decimal Capital { get; set; }
+        public decimal MontoPorCuota { get; set; }
         public decimal BCE { get; set; }
 
         [ForeignKey("ID")]
@@ -25,16 +26,18 @@ namespace Entities
             Fecha = DateTime.Now;
             Interes = 0;
             Capital = 0;
+            MontoPorCuota = 0;
             BCE = 0;
         }
 
-        public CuotasDetalle(int numCuotas,int id, DateTime fecha, decimal interes, decimal capital, decimal bce)
+        public CuotasDetalle(int numCuotas,int id, DateTime fecha, decimal interes, decimal capital,decimal montoPorCuota, decimal bce)
         {
             NumCuotas = numCuotas;
             ID = id;
             Fecha = fecha;
             Interes = interes;
             Capital = capital;
+            MontoPorCuota = montoPorCuota;
             BCE = bce;
         }
     }
