@@ -79,7 +79,7 @@ namespace PrimerPacialA2.Registros
 
             CuentaIdDropDownList.DataSource = repositorioBase.GetList(t => true);
             CuentaIdDropDownList.DataValueField = "CuentaID";
-            CuentaIdDropDownList.DataTextField = "CuentaID";
+            CuentaIdDropDownList.DataTextField = "Nombre";
             CuentaIdDropDownList.DataBind();
         }
 

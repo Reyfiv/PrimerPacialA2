@@ -13,7 +13,8 @@ namespace Entities
         public decimal Capital { get; set; }
         public decimal InteresAnual { get; set; }
         public int TiempoMeses { get; set; }
-        public DateTime Fecha { get; set; }
+        public decimal TotalARetornar { get; set; }
+        public DateTime FechaInicio { get; set; }
         public virtual List<CuotasDetalle> Cuotas { get; set; }
 
         public Prestamos()
@@ -23,7 +24,7 @@ namespace Entities
             Capital = 0;
             InteresAnual = 0;
             TiempoMeses = 0;
-            Fecha = DateTime.Now;
+            FechaInicio = DateTime.Now;
             this.Cuotas = new List<CuotasDetalle>();
 
         }

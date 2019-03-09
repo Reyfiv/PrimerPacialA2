@@ -26,6 +26,7 @@ namespace PrimerPacialA2.Registros
             CapitalTextBox.Text = string.Empty;
             InteresTextBox.Text = string.Empty;
             TiempoMesesTextBox.Text = string.Empty;
+            TotalARetornarTextBox.Text = string.Empty;
             ViewState["Prestamos"] = new Prestamos();
             this.BindGrid();
         }
@@ -53,7 +54,8 @@ namespace PrimerPacialA2.Registros
             DateTime date;
             bool resultado = DateTime.TryParse(FechaTextBox.Text, out date);
             if (resultado == true)
-                prestamos.Fecha = date;
+                prestamos.FechaInicio = date;
+            prestamos.TotalARetornar = Utils.ToDecimal(TotalARetornarTextBox.Text);
             prestamos.Cuotas = (List<CuotasDetalle>)ViewState["CuotasDetalle"];
             return prestamos;
         }
@@ -66,7 +68,7 @@ namespace PrimerPacialA2.Registros
             CapitalTextBox.Text = prestamos.Capital.ToString();
             InteresTextBox.Text = prestamos.InteresAnual.ToString();
             TiempoMesesTextBox.Text = prestamos.TiempoMeses.ToString();
-
+            TotalARetornarTextBox.Text = prestamos.TotalARetornar.ToString();
             //filtro para buscar mi detalle por id del prestamo, recordando que ya lo tengo enlazado con una variable que le hace referencia en el detalle.
             //Asi puedo hacer que me muestre el detalle cuando lo busco en el Registro De Prestamos.
             Expression<Func<CuotasDetalle, bool>> filtro = x => true;
@@ -112,12 +114,12 @@ namespace PrimerPacialA2.Registros
 
         protected void CalcularButton_Click(object sender, EventArgs e)
         {
-            Prestamos prestamos = new Prestamos();
             CuotasDetalle cuotas = new CuotasDetalle();
             List<CuotasDetalle> cuotasDetalles = new List<CuotasDetalle>();
 
-            decimal interes, capital, meses, montoPagar;
-            interes = Utils.ToDecimal(InteresTextBox.Text);
+            decimal interes, capital, montoPagar;
+            int meses;
+            interes = Utils.ToDecimal(InteresTextBox.Text) / 100;
             capital = Utils.ToDecimal(CapitalTextBox.Text);
             meses = Utils.ToInt(TiempoMesesTextBox.Text);
 
@@ -128,6 +130,7 @@ namespace PrimerPacialA2.Registros
                 cuotas.MontoPorCuota = cuotas.Interes + cuotas.Capital;
 
                 montoPagar = cuotas.Interes * meses + capital;
+                TotalARetornarTextBox.Text = montoPagar.ToString();
                 if (i == 0)
                 {
                     cuotas.BCE = montoPagar - (cuotas.Interes + cuotas.Capital);
@@ -143,7 +146,7 @@ namespace PrimerPacialA2.Registros
                 }
                 else
                     cuotasDetalles.Add(new CuotasDetalle(0, Utils.ToInt(PrestamoIdTextBox.Text), cuotas.Fecha.AddMonths(i), cuotas.Interes, cuotas.Capital, cuotas.MontoPorCuota, cuotas.BCE));
-
+                
                 ViewState["CuotasDetalle"] = cuotasDetalles;
                 DatosGridView.DataSource = ViewState["CuotasDetalle"];
                 DatosGridView.DataBind();
@@ -174,6 +177,11 @@ namespace PrimerPacialA2.Registros
                 Utils.ShowToastr(this.Page, "Guardado con exito!!", "Guardado", "success");
                 Limpiar();
             }
+        }
+
+        protected void ImprimirButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

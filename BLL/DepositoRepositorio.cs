@@ -15,7 +15,7 @@ namespace BLL
             {
                 if (_contexto.Set<Deposito>().Add(entity) != null)
                 {
-                    _contexto.Cuenta.Find(entity.CuentaID).Balance += entity.Monto;
+                    _contexto.Cuenta.Find(entity.CuentaID).Balance -= entity.Monto;
                     _contexto.SaveChanges();
                     paso = true;
                 }
@@ -33,7 +33,7 @@ namespace BLL
             try
             {
                 Deposito entity = _contexto.Set<Deposito>().Find(id);
-                _contexto.Cuenta.Find(entity.CuentaID).Balance -= entity.Monto;
+                _contexto.Cuenta.Find(entity.CuentaID).Balance += entity.Monto;
                 _contexto.Set<Deposito>().Remove(entity);
 
                 if (_contexto.SaveChanges() > 0)
@@ -61,13 +61,13 @@ namespace BLL
 
                 if (entity.CuentaID != depositosanterior.CuentaID)
                 {
-                    Cuenta.Balance += entity.Monto;
+                    Cuenta.Balance -= entity.Monto;
                     Cuentasanterior.Balance -= depositosanterior.Monto;
                 }
 
                 decimal diferencia;
                 diferencia = entity.Monto - depositosanterior.Monto;
-                Cuenta.Balance += diferencia;
+                Cuenta.Balance -= diferencia;
 
                 _contexto.Entry(entity).State = EntityState.Modified;
                 if (_contexto.SaveChanges() > 0)

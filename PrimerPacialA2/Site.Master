@@ -95,6 +95,7 @@
                             <ul class="dropdown-menu">
                                 <li><a href="/Consultas/cCuentas.aspx">Cuentas</a></li>
                                 <li><a href="/Consultas/cDepositos.aspx">Depositos</a></li>
+                                <li><a href="/Consultas/cPrestamos.aspx">Prestamos</a></li>
                             </ul>
                         </li>
                         <li><a href="#">Ayuda</a></li>

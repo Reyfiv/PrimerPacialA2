@@ -78,6 +78,7 @@ namespace BLL
         public override bool Eliminar(int id)
         {
             bool paso = false;
+            decimal monto = 0;
             try
             {
                 Prestamos Cuotas = _contexto.Prestamos.Find(id);
@@ -88,7 +89,11 @@ namespace BLL
                     if (!Cuotas.Cuotas.Exists(d => d.NumCuotas == item.NumCuotas))
                         _contexto.Entry(item).State = EntityState.Deleted;
                 }
-
+                foreach (var item in Cuotas.Cuotas)
+                {
+                    monto -= item.MontoPorCuota;
+                }
+                _contexto.Cuenta.Find(Cuotas.CuentaId).Balance += monto;
                 _contexto.Prestamos.Remove(Cuotas);
 
                 if (_contexto.SaveChanges() > 0)
@@ -113,7 +118,7 @@ namespace BLL
             {
                 foreach (var item in entity.Cuotas)
                 {
-                    monto += item.Capital + item.Interes;
+                    monto += item.MontoPorCuota;
                 }
                 _contexto.Cuenta.Find(entity.CuentaId).Balance += monto;
                 _contexto.Prestamos.Add(entity);

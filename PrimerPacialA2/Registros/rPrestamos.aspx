@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#"  MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="rPrestamos.aspx.cs" Inherits="PrimerPacialA2.Registros.rPrestamos" %>
 
-<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="Content6" ContentPlaceHolderID="MainContent" runat="server">
     <div class="panel" style="background-color:black">
         <div class="panel-heading" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size:medium; color:white">Registro de Prestamos</div>
     </div>
@@ -76,7 +76,14 @@
                     <asp:TextBox ID="FechaTextBox" TextMode="Date" runat="server" class="form-control input-sm" Style="font-size:large" Visible="false"></asp:TextBox>
                 </div>
             </div>
-
+            <%--TotalAretornar--%>
+            <div class="form-group">
+                <label for="TotalARetornarTextBox" class="col-md-8 control-label input-sm" style="font-size:large">Total a Retornar</label>
+                <div class="col-md-3">
+                    <asp:TextBox  ID="TotalARetornarTextBox" runat="server" class="form-control input-sm" Style="font-size:large; text-align:center" ReadOnly="true"></asp:TextBox> 
+                </div>
+            </div>
+            <br />
              <%--Botones--%>
             <div class="panel">
                 <div class="text-center">
@@ -84,6 +91,7 @@
                         <asp:Button ID="NuevoButton" runat="server" Text="Nuevo" class="btn btn-primary btn-md" OnClick="NuevoButton_Click" />
                         <asp:Button ID="GuardarButton" runat="server" Text="Guardar" class="btn btn-success btn-md"  ValidationGroup="Guardar" OnClick="GuardarButton_Click" />
                         <asp:Button ID="EliminarButton" runat="server" Text="Eliminar" class="btn btn-danger btn-md" OnClick="EliminarButton_Click"  />
+                        <asp:Button ID="ImprimirButton" runat="server" Text="Imprimir" class="btn btn-warning btn-md" OnClick="ImprimirButton_Click" />
                     </div>
                 </div>
             </div>
