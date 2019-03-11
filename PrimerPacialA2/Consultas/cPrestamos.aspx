@@ -38,5 +38,12 @@
                 <HeaderStyle BackColor="Black" Font-Bold="true" ForeColor="White" />
                 <RowStyle BackColor="#EFF3FB" />
         </asp:GridView>
+         <div class="panel">
+                <div class="text-center">
+                    <div class="form-group">
+                        <asp:Button ID="ImprimirButton" runat="server" Text="Imprimir" class="btn btn-warning btn-lg" OnClick="ImprimirButton_Click" />
+                    </div>
+                </div>
+            </div>
     </div>
 </asp:Content>

@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Entities
 {
+    [Serializable]
     public class Cuenta
     {
         [Key]

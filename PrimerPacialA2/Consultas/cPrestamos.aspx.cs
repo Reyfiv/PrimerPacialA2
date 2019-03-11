@@ -55,5 +55,10 @@ namespace PrimerPacialA2.Consultas
         {
             MetodoBuscar();
         }
+
+        protected void ImprimirButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(@"\Reportes\RepotePrestamos.aspx");
+        }
     }
 }

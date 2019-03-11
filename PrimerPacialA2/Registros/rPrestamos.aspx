@@ -17,12 +17,11 @@
                     <asp:Button ID="BuscarButton" runat="server" Text="Buscar" class="btn btn-info btn-sm" OnClick="BuscarButton_Click" />
                 </div>
             </div>
-            <br/>
-             <%--CuentaId--%>
+                <%--CuentaId--%>
             <div class="form-group">
                 <label for="CuentaIdDropDownList" class="col-md-3 control-label input-sm" style="font-size:large">Cuenta</label>
                 <div class="col-md-8">
-                    <asp:DropDownList ID="CuentaIdDropDownList" runat="server" Class="form-control input-sm" style="font-size:large">
+                    <asp:DropDownList ID="CuentaIdDropDownList" runat="server" Class="form-control input-sm" style="font-size:large" >
                     </asp:DropDownList>
                 </div>
             </div>
@@ -45,6 +44,7 @@
                 <asp:RequiredFieldValidator ID="ValidaInteres" runat="server" ErrorMessage="El campo &quot;Monto&quot; esta vacio" ControlToValidate="InteresTextBox" ForeColor="Red" Display="Dynamic" ToolTip="Campo Interes obligatorio" ValidationGroup="Guardar">*</asp:RequiredFieldValidator>
             </div>
             <br/>
+           
             <%--Tiempo en Meses--%>
             <div class="form-group">
                 <label for="TiempoMesesTextBox" class="col-md-3 control-label input-sm" style="font-size:large">Tiempo en meses</label>
@@ -76,6 +76,7 @@
                     <asp:TextBox ID="FechaTextBox" TextMode="Date" runat="server" class="form-control input-sm" Style="font-size:large" Visible="false"></asp:TextBox>
                 </div>
             </div>
+          
             <%--TotalAretornar--%>
             <div class="form-group">
                 <label for="TotalARetornarTextBox" class="col-md-8 control-label input-sm" style="font-size:large">Total a Retornar</label>

@@ -11,7 +11,8 @@ namespace PrimerPacialA2.Registros
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            LlenaCombo();
+            if (!Page.IsPostBack)
+                LlenaCombo();
         }
 
         protected void BindGrid()
@@ -33,14 +34,13 @@ namespace PrimerPacialA2.Registros
 
         protected void LlenaCombo()
         {
+            ViewState["Prestamos"] = new Prestamos();
             RepositorioBase<Cuenta> repositorioBase = new RepositorioBase<Cuenta>();
-
             CuentaIdDropDownList.DataSource = repositorioBase.GetList(t => true);
             CuentaIdDropDownList.DataValueField = "CuentaID";
             CuentaIdDropDownList.DataTextField = "Nombre";
             CuentaIdDropDownList.DataBind();
-
-            ViewState["Prestamos"] = new Prestamos();
+  
         }
 
         protected Prestamos LlenaClase(Prestamos prestamos)
@@ -142,10 +142,10 @@ namespace PrimerPacialA2.Registros
                 }
                 if(i == 0)
                 {
-                    cuotasDetalles.Add(new CuotasDetalle(0, Utils.ToInt(PrestamoIdTextBox.Text), cuotas.Fecha, cuotas.Interes, cuotas.Capital, cuotas.MontoPorCuota, cuotas.BCE));
+                    cuotasDetalles.Add(new CuotasDetalle(0, Utils.ToInt(PrestamoIdTextBox.Text),Utils.ToInt(CuentaIdDropDownList.Text), cuotas.Fecha, cuotas.Interes, cuotas.Capital, cuotas.MontoPorCuota, cuotas.BCE));
                 }
                 else
-                    cuotasDetalles.Add(new CuotasDetalle(0, Utils.ToInt(PrestamoIdTextBox.Text), cuotas.Fecha.AddMonths(i), cuotas.Interes, cuotas.Capital, cuotas.MontoPorCuota, cuotas.BCE));
+                    cuotasDetalles.Add(new CuotasDetalle(0, Utils.ToInt(PrestamoIdTextBox.Text), Utils.ToInt(CuentaIdDropDownList.SelectedValue), cuotas.Fecha.AddMonths(i), cuotas.Interes, cuotas.Capital, cuotas.MontoPorCuota, cuotas.BCE));
                 
                 ViewState["CuotasDetalle"] = cuotasDetalles;
                 DatosGridView.DataSource = ViewState["CuotasDetalle"];
@@ -183,5 +183,6 @@ namespace PrimerPacialA2.Registros
         {
 
         }
+
     }
 }
