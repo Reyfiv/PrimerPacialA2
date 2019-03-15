@@ -854,7 +854,7 @@
         </TablixRowHierarchy>
         <DataSetName>Prestamos</DataSetName>
         <Top>7.51044cm</Top>
-        <Left>2.03729cm</Left>
+        <Left>1.03126cm</Left>
         <Height>1.8cm</Height>
         <Width>18.37312cm</Width>
         <Style>
@@ -868,7 +868,7 @@
         <Value>Logo</Value>
         <Sizing>FitProportional</Sizing>
         <Top>0.73766cm</Top>
-        <Left>7.77813cm</Left>
+        <Left>7.46132cm</Left>
         <Height>1.87042cm</Height>
         <Width>5.38588cm</Width>
         <ZIndex>1</ZIndex>
@@ -901,7 +901,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox29</rd:DefaultName>
         <Top>2.78446cm</Top>
-        <Left>6.56042cm</Left>
+        <Left>6.24361cm</Left>
         <Height>0.81167cm</Height>
         <Width>7.97688cm</Width>
         <ZIndex>2</ZIndex>
@@ -938,7 +938,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox30</rd:DefaultName>
         <Top>3.70196cm</Top>
-        <Left>7.03729cm</Left>
+        <Left>6.72048cm</Left>
         <Height>0.75875cm</Height>
         <Width>6.81078cm</Width>
         <ZIndex>3</ZIndex>
@@ -975,7 +975,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox31</rd:DefaultName>
         <Top>4.46071cm</Top>
-        <Left>7.03729cm</Left>
+        <Left>6.72048cm</Left>
         <Height>0.6cm</Height>
         <Width>6.75979cm</Width>
         <ZIndex>4</ZIndex>
@@ -1010,7 +1010,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox32</rd:DefaultName>
         <Top>5.4737cm</Top>
-        <Left>8.30729cm</Left>
+        <Left>7.99048cm</Left>
         <Height>0.67938cm</Height>
         <Width>4.85672cm</Width>
         <ZIndex>5</ZIndex>
@@ -1025,21 +1025,15 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>11in</Height>
+    <Height>11.7in</Height>
     <Style>
       <Border>
         <Style>None</Style>
       </Border>
-      <TopBorder>
-        <Style>Solid</Style>
-      </TopBorder>
-      <BottomBorder>
-        <Style>Solid</Style>
-      </BottomBorder>
       <BackgroundColor>White</BackgroundColor>
     </Style>
   </Body>
-  <Width>8.6761in</Width>
+  <Width>8.31in</Width>
   <Page>
     <PageFooter>
       <Height>2.54cm</Height>

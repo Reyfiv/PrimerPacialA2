@@ -157,7 +157,6 @@ namespace PrimerPacialA2.Registros
         protected void GuardarButton_Click(object sender, EventArgs e)
         {
             DetalleRepositorio repositorio = new DetalleRepositorio();
-            RepositorioBase<Prestamos> repositorioBase = new RepositorioBase<Prestamos>();
             Prestamos prestamos = new Prestamos();
             bool paso = false;
 
@@ -169,12 +168,15 @@ namespace PrimerPacialA2.Registros
 
             prestamos = LlenaClase(prestamos);
             if (prestamos.ID == 0)
-                paso = repositorio.Guardar(prestamos);
-            else
-                paso = repositorio.Modificar(prestamos);
-            if (paso)
             {
+                paso = repositorio.Guardar(prestamos);
                 Utils.ShowToastr(this.Page, "Guardado con exito!!", "Guardado", "success");
+                Limpiar();
+            }
+            else
+            {
+                paso = repositorio.Modificar(prestamos);
+                Utils.ShowToastr(this.Page, "Modificado con exito!!", "Modificado", "success");
                 Limpiar();
             }
         }

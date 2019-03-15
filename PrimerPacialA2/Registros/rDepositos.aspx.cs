@@ -119,12 +119,15 @@ namespace PrimerPacialA2.Registros
 
             deposito = LlenaClase(deposito);
             if (deposito.DepositoID == 0)
-                paso = repositorio.Guardar(deposito);
-            else
-                paso = repositorio.Modificar(deposito);
-            if (paso)
             {
+                paso = repositorio.Guardar(deposito);
                 Utils.ShowToastr(this.Page, "Guardado con exito!!", "Guardado", "success");
+                Limpiar();
+            }
+            else
+            {
+                paso = repositorio.Modificar(deposito);
+                Utils.ShowToastr(this.Page, "Modificado con exito!!", "Modificado", "success");
                 Limpiar();
             }
         }

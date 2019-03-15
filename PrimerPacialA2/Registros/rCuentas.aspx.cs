@@ -99,12 +99,15 @@ namespace PrimerPacialA2.Registros
 
             cuenta = LlenaClase(cuenta);
             if (cuenta.CuentaID == 0)
-                paso = repositorioBase.Guardar(cuenta);
-            else
-                paso = repositorioBase.Modificar(cuenta);
-            if (paso)
             {
+                paso = repositorioBase.Guardar(cuenta);
                 Utils.ShowToastr(this.Page, "Guardado con exito!!", "Guardado", "success");
+                Limpiar();
+            }
+            else
+            {
+                paso = repositorioBase.Modificar(cuenta);
+                Utils.ShowToastr(this.Page, "Modificado con exito!!", "Modificado", "success");
                 Limpiar();
             }
         }

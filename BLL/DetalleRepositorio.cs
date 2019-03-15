@@ -39,34 +39,52 @@ namespace BLL
             return Cuotas;
         }
 
-        public override bool Modificar(Prestamos Cuotas)
+        public override bool Modificar(Prestamos prestamos)
         {
             bool paso = false;
+            decimal monto = 0;
+            decimal montoAnterior = 0; 
             try
             {
-                //buscar las entidades que no estan para removerlas
-                var Anterior = _contexto.Prestamos.Find(Cuotas.ID);
-                foreach (var item in Anterior.Cuotas)
+                //Buscamos la Detalle(cuota) anterior convertiendola en una lista
+                //OJO:AsNoTracking() sirve para que el conetexto no le de seguimiento a la entidad y hacer porder manipular su estado.
+                var DetalleAnterior = _contexto.Cuotas.Where(x => x.ID == prestamos.ID).AsNoTracking().ToList();
+                //Afectando la tabla de cuentas
+                foreach (var item in DetalleAnterior)
                 {
-                    if (!Cuotas.Cuotas.Exists(d => d.NumCuotas == item.NumCuotas))
-                    { 
+                    montoAnterior += item.MontoPorCuota;
+                }
+                _contexto.Cuenta.Find(prestamos.CuentaId).Balance -= montoAnterior;
+                foreach (var item in prestamos.Cuotas)
+                {
+                    monto += item.MontoPorCuota;
+                }
+                _contexto.Cuenta.Find(prestamos.CuentaId).Balance += monto;
+
+                //Marcamos como eleminado las celdas que sobran en el Detalle(Cuotas) Anterior de la base de datos
+                foreach (var item in DetalleAnterior)
+                {
+                    if (!prestamos.Cuotas.Exists(x => x.NumCuotas.Equals(item.NumCuotas)))
+                    {
                         _contexto.Entry(item).State = EntityState.Deleted;
                     }
                 }
-
-                //recorrer el detalle
-                foreach (var item in Cuotas.Cuotas)
+                //Modificamos o agregamos las celdas que necesitamos con los nuevos datos 
+                //OJO: No modificar el item directamente despues de cambiarle el estado
+                //porque al dar la segunda vuelta dara un error de que la entidad a sido modicada.
+                foreach (var item in prestamos.Cuotas)
                 {
-                    //Muy importante indicar que pasara con la entidad del detalle
-                    var estado = item.ID > 0 ? EntityState.Modified : EntityState.Added;
-                    _contexto.Entry(item).State = estado;
+                    _contexto.Entry(item).State = item.NumCuotas == 0 ? EntityState.Added : EntityState.Modified;
                 }
 
-                //Idicar que se esta modificando el encabezado
-                _contexto.Entry(Cuotas).State = EntityState.Modified;
-
+                //Modificamos la entediad completa
+                _contexto.Entry(prestamos).State = EntityState.Modified;
+                //Guardamos los Cambios 
                 if (_contexto.SaveChanges() > 0)
+                {
                     paso = true;
+                }
+                _contexto.Dispose();
             }
             catch (Exception)
             {
