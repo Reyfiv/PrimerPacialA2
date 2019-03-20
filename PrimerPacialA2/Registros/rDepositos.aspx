@@ -10,11 +10,11 @@
             <%--DepositoId--%>
             <div class="form-group">
                 <label for="DepositoIdTextBox" class="col-md-3 control-label input-sm" style="font-size:large">Deposito Id</label>
-                <div class="col-md-1 col-sm-2 col-xs-4">
+                <div class="col-md-1 ">
                     <asp:TextBox ID="DepositoIdTextBox" runat="server" placeholder="0" class="form-control input-sm" Style="font-size:large" TextMode="Number"></asp:TextBox>                  
                 </div>
                  <asp:RegularExpressionValidator ID="ValidaID" runat="server" ErrorMessage='Campo "Cuenta Id" solo acepta numeros' ControlToValidate="DepositoIdTextBox" ValidationExpression="^[0-9]*" Text="*" ForeColor="Red" Display="Dynamic" ToolTip="Entrada no valida" ValidationGroup="Guardar"></asp:RegularExpressionValidator>
-                <div class="col-md-1 col-sm-2 col-xs-4">
+                <div class="col-md-1 ">
                     <asp:Button ID="BuscarButton" runat="server" Text="Buscar" class="btn btn-info btn-sm" OnClick="BuscarButton_Click" />
                 </div>
             </div>

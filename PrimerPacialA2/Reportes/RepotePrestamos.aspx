@@ -4,7 +4,7 @@
 
 <asp:Content ID="Content8" ContentPlaceHolderID="MainContent" runat="server">
           <div class="panel-body">
-             <div class="form-horizontal col-md-12" role="form">
+             <div class="form-horizontal col-md-12; table-responsive" role="form">
                 <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                  <rsweb:ReportViewer  ID="PrestamosReportViewer" runat="server" ProcessingMode="Remote" Height="741px" style="text-align:center" Width="1195px">
                        <ServerReport ReportPath="" ReportServerUrl=""/>

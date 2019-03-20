@@ -142,10 +142,10 @@ namespace PrimerPacialA2.Registros
                 }
                 if(i == 0)
                 {
-                    cuotasDetalles.Add(new CuotasDetalle(0, Utils.ToInt(PrestamoIdTextBox.Text),Utils.ToInt(CuentaIdDropDownList.Text), cuotas.Fecha, cuotas.Interes, cuotas.Capital, cuotas.MontoPorCuota, cuotas.BCE));
+                    cuotasDetalles.Add(new CuotasDetalle(0, Utils.ToInt(PrestamoIdTextBox.Text),Utils.ToInt(CuentaIdDropDownList.Text), cuotas.Fecha,Math.Round(cuotas.Interes, 2),Math.Round(cuotas.Capital, 2), Math.Round(cuotas.MontoPorCuota, 2), Math.Round(cuotas.BCE, 2)));
                 }
                 else
-                    cuotasDetalles.Add(new CuotasDetalle(0, Utils.ToInt(PrestamoIdTextBox.Text), Utils.ToInt(CuentaIdDropDownList.SelectedValue), cuotas.Fecha.AddMonths(i), cuotas.Interes, cuotas.Capital, cuotas.MontoPorCuota, cuotas.BCE));
+                    cuotasDetalles.Add(new CuotasDetalle(0, Utils.ToInt(PrestamoIdTextBox.Text), Utils.ToInt(CuentaIdDropDownList.SelectedValue), cuotas.Fecha.AddMonths(i), Math.Round(cuotas.Interes,2), Math.Round(cuotas.Capital, 2), Math.Round(cuotas.MontoPorCuota, 2), Math.Round(cuotas.BCE, 2)));
                 
                 ViewState["CuotasDetalle"] = cuotasDetalles;
                 DatosGridView.DataSource = ViewState["CuotasDetalle"];

@@ -9,11 +9,11 @@
             <%--PrestamoId--%>
             <div class="form-group">
                 <label for="PrestamoIdTextBox" class="col-md-3 control-label input-sm" style="font-size:large">Prestamo Id</label>
-                <div class="col-md-1 col-sm-2 col-xs-4">
+                <div class="col-md-1 ">
                     <asp:TextBox ID="PrestamoIdTextBox" runat="server" placeholder="0" class="form-control input-sm" Style="font-size:large" TextMode="Number"></asp:TextBox>                  
                 </div>
                     <asp:RegularExpressionValidator ID="ValidaID" runat="server" ErrorMessage='Campo "Prestamo Id" solo acepta numeros' ControlToValidate="PrestamoIdTextBox" ValidationExpression="^[0-9]*" Text="*" ForeColor="Red" Display="Dynamic" ToolTip="Entrada no valida" ValidationGroup="Guardar"></asp:RegularExpressionValidator>
-                <div class="col-md-1 col-sm-2 col-xs-4">
+                <div class="col-md-1 ">
                     <asp:Button ID="BuscarButton" runat="server" Text="Buscar" class="btn btn-info btn-sm" OnClick="BuscarButton_Click" />
                 </div>
             </div>
@@ -61,8 +61,8 @@
             </div>
             <br/>
              <%--Cuotas--%>
-            <div>  
-                <asp:GridView ID="DatosGridView" runat="server" class="table table-condensed tabled-bordered table-responsive" CellPadding="6" ForeColor="#333333" GridLines="None">
+            <div class="table-responsive">  
+                <asp:GridView ID="DatosGridView" runat="server" class="table table-condensed table-responsive" CellPadding="6" ForeColor="#333333" GridLines="None">
                 <AlternatingRowStyle BackColor="White" />
                     <Columns>
                     </Columns>

@@ -148,6 +148,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PrimerPacialA2DbDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="PrimerPacialADbDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrimerPacialADbDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registros\rCuentas.aspx.cs">
       <DependentUpon>rCuentas.aspx</DependentUpon>
@@ -200,6 +205,17 @@
     <Content Include="PrimerPacialA2DbDataSet.xss">
       <DependentUpon>PrimerPacialA2DbDataSet.xsd</DependentUpon>
     </Content>
+    <Content Include="PrimerPacialADbDataSet.xsc">
+      <DependentUpon>PrimerPacialADbDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="PrimerPacialADbDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PrimerPacialADbDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="PrimerPacialADbDataSet.xss">
+      <DependentUpon>PrimerPacialADbDataSet.xsd</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\BankingControl - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\BankingControl - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
@@ -221,7 +237,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Reportes\Report_Prestamos.rdlc" />
+    <Content Include="Reportes\Report_Prestamos.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

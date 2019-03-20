@@ -25,8 +25,8 @@
     <br/>
     <br/>
     <%--Grid--%>
-    <div>
-        <asp:GridView ID="DatosGridView" runat="server" class="table table-condensed tabled-bordered table-responsive" CellPadding="6" ForeColor="#333333" GridLines="None">
+    <div class="table-responsive">
+        <asp:GridView ID="DatosGridView" runat="server" class="table table-condensed  table-responsive" CellPadding="6" ForeColor="#333333" GridLines="None">
             <AlternatingRowStyle BackColor="White" />
                 <Columns>
                     <asp:HyperLinkField ControlStyle-ForeColor="Black"
