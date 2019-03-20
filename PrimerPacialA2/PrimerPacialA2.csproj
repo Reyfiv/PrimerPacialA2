@@ -107,7 +107,9 @@
     <Content Include="Registros\rPrestamos.aspx" />
     <Content Include="Reportes\RepotePrestamos.aspx" />
     <Content Include="Resources\Logo.png" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Consultas\cCuentas.aspx.cs">
@@ -198,6 +200,8 @@
     <Content Include="PrimerPacialA2DbDataSet.xss">
       <DependentUpon>PrimerPacialA2DbDataSet.xsd</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\BankingControl - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\BankingControl - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

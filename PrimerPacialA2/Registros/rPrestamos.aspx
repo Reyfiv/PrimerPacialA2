@@ -17,6 +17,7 @@
                     <asp:Button ID="BuscarButton" runat="server" Text="Buscar" class="btn btn-info btn-sm" OnClick="BuscarButton_Click" />
                 </div>
             </div>
+            <br />
                 <%--CuentaId--%>
             <div class="form-group">
                 <label for="CuentaIdDropDownList" class="col-md-3 control-label input-sm" style="font-size:large">Cuenta</label>
@@ -81,7 +82,8 @@
             <div class="form-group">
                 <label for="TotalARetornarTextBox" class="col-md-8 control-label input-sm" style="font-size:large">Total a Retornar</label>
                 <div class="col-md-3">
-                    <asp:TextBox  ID="TotalARetornarTextBox" runat="server" class="form-control input-sm" Style="font-size:large; text-align:center" ReadOnly="true"></asp:TextBox> 
+                    <asp:TextBox  ID="TotalARetornarTextBox" runat="server" class="form-control input-sm" Style="font-size:large; text-align:center" ReadOnly="true"></asp:TextBox>
+                       <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="" ControlToValidate="TotalARetornarTextBox" ForeColor="Red" Display="Dynamic" ToolTip="Campo Capital es obligatorio" ValidationGroup="Guardar">*</asp:RequiredFieldValidator> 
                 </div>
             </div>
             <br />
@@ -92,7 +94,6 @@
                         <asp:Button ID="NuevoButton" runat="server" Text="Nuevo" class="btn btn-primary btn-md" OnClick="NuevoButton_Click" />
                         <asp:Button ID="GuardarButton" runat="server" Text="Guardar" class="btn btn-success btn-md"  ValidationGroup="Guardar" OnClick="GuardarButton_Click" />
                         <asp:Button ID="EliminarButton" runat="server" Text="Eliminar" class="btn btn-danger btn-md" OnClick="EliminarButton_Click"  />
-                        <asp:Button ID="ImprimirButton" runat="server" Text="Imprimir" class="btn btn-warning btn-md" OnClick="ImprimirButton_Click" />
                     </div>
                 </div>
             </div>

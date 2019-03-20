@@ -166,6 +166,15 @@ namespace PrimerPacialA2.Registros {
         protected global::System.Web.UI.WebControls.TextBox TotalARetornarTextBox;
         
         /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        
+        /// <summary>
         /// NuevoButton control.
         /// </summary>
         /// <remarks>
@@ -191,14 +200,5 @@ namespace PrimerPacialA2.Registros {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button EliminarButton;
-        
-        /// <summary>
-        /// ImprimirButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ImprimirButton;
     }
 }
